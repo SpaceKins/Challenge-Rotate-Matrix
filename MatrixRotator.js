@@ -12,8 +12,9 @@ exports.MatrixRotator = MatrixRotator;
 var Direction = require("./Direction").Direction;
 
 function MatrixRotator(matrix){
-  this.matrix = matrix;
-  
+  this.matrix = matrix; 
+
+ // console.log(this.matrix);
 };
 
 //                                         |-- Must be Direction.CW
@@ -21,7 +22,31 @@ function MatrixRotator(matrix){
 MatrixRotator.prototype.rotate = function(direction) {
   // do work here
 
-  // must be a valid Direction, see Direction.js
+  var newRows=[];
 
+  for(var i=0;i<this.matrix.length;i++)
+  {
+    newRows.push([]);
+  }
+
+  //console.log("New Rows =" + this.matrix.length);
+  //console.log(newRows);
+  for(var i=0;i<this.matrix.length;i++)
+  {
+  //  console.log(this.matrix[i]);
+  	for(var j=0;j<this.matrix[i].length;j++)
+  	{
+  //    console.log("adding " +this.matrix[i][j] + " to row " + j)    ;
+  		 newRows[j].unshift(this.matrix[i][j]);
+  	}
+  }
+
+  //console.log(newRows);
+  this.matrix=newRows;
+  // must be a valid Direction, see Direction.js
+  MatrixRotator(this.matrix);
 
 };
+
+
+
